@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="Shortcut icon" href="images/favicon.ico" />
+<link rel="Bookmark" href="images/favicon.ico" />
+<link href="css/main.css" rel="stylesheet" type="text/css"><!--css連結方式-->
+<link rel="stylesheet" href="../css/jquery-ui.css">
+<script type="text/javascript" src="../js/jquery-1.12.4.min.js"></script><!--js連結方式-->
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><!--適應性-->
+<meta http-equiv="X-UA-Compatible" content="IE=edge;IE=11;IE=10;IE=9;IE=8">
+<!--[if lt IE 9]>
+  <script type="text/javascript" src="../js/html5shiv.js"></script>
+  <script type="text/javascript" src="../js/respond.js"></script>
+<![endif]-->
+ 
+
+<title>美髮椅,美容椅,美髮器材,美甲桌,沙龍椅,足部美甲設備專業製造商-台湾宝椅子有限公司</title>
+
+
+<!-- 【TW】 -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script src="js/openclose.js"></script>
+<link href="css/scrollbar.css" rel="stylesheet" type="text/css"><!--捲軸-->
+<script type="text/javascript" src="js/jquery.mCustomScrollbar.js"></script>
+</head>
+
+<body>
+    <!--#include file="include/header.asp" --><!--主選單-->
+    <div id="content_story">
+       
+            <div class="clock_absolut">
+                <div class="clock">
+                    <div class="clock6"><img src="images/clock/clock6.png"></div>
+                    <div class="clock5"><img src="images/clock/clock5.png"></div>
+                    <div class="clock4"><img src="images/clock/clock4.png"></div>
+                    <div class="clock3"><img src="images/clock/clock3.png"></div>
+                    <!--<div class="clock2"><img src="images/clock/clock2.png"></div>
+                    <div class="clock1"><img src="images/clock/clock1.png"></div>-->
+                    <div class="bg_clock"><img src="images/clock/bg_clock.png"></div>
+                    
+                </div>
+                
+            </div>
+        
+        
+        
+    </div>
+    
+
+<!--#include file="include/footer.asp"-->
+
+<script>
+    $('.btn_spry').click(function(){
+            // 當點到標題時，若答案是隱藏時則顯示它；反之則隱藏
+            menu = $(this).prev('div.more_storyInfo');
+            if(menu.is(":hidden")){
+                menu.slideDown(); 
+                //$('.btn_spry span').addClass("add");
+                $(this).children("span").addClass("add");
+            }else{
+                menu.slideUp(); 
+                //$('.btn_spry span').removeClass("add");
+                $(this).children("span").removeClass("add");
+                
+            }           
+        }).siblings('div.more_storyInfo').hide();
+</script>
+<script>
+    var count1=0;
+    var heights1=0;
+    var heights2=0;
+    var isHover = false;
+    var speed=3500;
+    function horse(){
+        heights1=heights1-30;
+        if(parseInt(heights1)<0){
+            heights2=-heights1;
+        }else{
+            heights2=heights1;
+        }
+        $('.mCSB_container').animate({top: heights1+'px'},800);
+        $('#sform ul').append('<li class="per_yearInfo">'+$("#sform li").eq(count1).html()+'</li>');
+        count1++;
+        timer = setTimeout(horse,speed);
+    }
+    $(function(){
+        $("#sform").mCustomScrollbar({
+            axis:"y", // horizontal scrollbar
+            callbacks:{
+                onScrollStart:function(){
+                    stopScrollbar(); 
+                },
+                onScroll:function(){
+                    startScrollbar(); 
+                }
+            }
+        });
+
+        if(!isHover){
+            // 啟動計時器
+            timer = setTimeout(horse,speed);
+        }
+
+        $('#sform ul').hover(function(){
+            stopScrollbar()
+        }, function(){
+            isHover = false;
+            // 啟動計時器
+            timer = setTimeout(horse,speed);
+        });
+
+    });
+
+    function stopScrollbar(){
+        isHover = true;
+        clearTimeout(timer);
+    }
+
+    function startScrollbar(){
+        var intnumber1=0,intnumber2=0;
+        heights1=($('.mCSB_container').css('top')).replace('px','');
+        intnumber1=(parseInt(heights1) / 30) | 0;
+        intnumber2=parseInt(heights1)%30;
+        if(intnumber2!="0"){intnumber1=intnumber1-1}
+        heights1=parseInt(intnumber1)*30;
+        isHover = false;
+        timer = setTimeout(horse,speed);
+    }
+
+</script>
+</body>
+</html>
